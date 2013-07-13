@@ -3,7 +3,7 @@
 # Released under the GNU General Public License, v3.0 or later
 # Copyright (c) 2007 Phil Jones <interstar@gmail.com>
 
-from libs.gwInterpreter import *
+from libs.interpreter import *
 
 version = '0.3.5'
 

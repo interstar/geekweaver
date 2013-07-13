@@ -5,7 +5,7 @@ import string
 import libs.gwNode
 from libs.SymbolTable import *
 import libs.gwModes 
-from libs.gwInterpreter import * 
+from libs.interpreter import * 
 
 class TestMiscTools(unittest.TestCase) :
 
