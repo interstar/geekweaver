@@ -26,7 +26,7 @@ if __name__ == '__main__' :
     print "importing packages %s" % packages
   
     log.log('<h3>GeekWeaver version %s</h3>' % version,'html')
-    log.log('<b>Copyright Phil Jones 2007</b>','html')
+    log.log('<b>Copyright Phil Jones 2007-2013</b>','html')
     log.log('<i>This code is released under the Gnu General Public License, version 3.0 or higher</i>','html')
     log.log('Starting ...')
     i = f.getInterpreter()

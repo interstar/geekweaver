@@ -6,7 +6,7 @@
 
 from opml import *
 from os import removedirs, mkdir, rmdir, getcwd, makedirs
-from shutil import copyfile, copytree
+from shutil import copyfile, copytree, copy2
 
 import re
 from string import Template
@@ -502,7 +502,7 @@ class StaticSiteMode(UrMode) :
         elif re.match('@cDir',s) :
             nd = fellow.cDir + '/' + spaceUnder(s[5:].strip())
             self.log('evalSiteNode\changing the cDir to %s' % nd)
-
+        
         else :
             if s[0] == '&'  : s = s[1:]
             nd = fellow.cDir + '/' + spaceUnder(s)
@@ -521,6 +521,22 @@ class StaticSiteMode(UrMode) :
                 i = [lpn.pageName,spaceUnder(lpn.outFileName),False]
                 index.append(i)
                 self.log('index += %s'%i)
+                
+            elif re.match(":copy",x.text) :
+                source = (x.text[6:]).strip()
+                #only absolute copy
+                self.log("Want to copy from %s to %s "%(source,nd))
+                self.log(self.environment.getSymbolTable(),"symTable")
+                self.log("Fellow %s" % fellow)
+                copy2(source,nd)
+                
+            elif re.match(":copytree",x.text) :
+                source = (x.text[10:]).strip()
+                #only absolute copy
+                self.log("Want to copy from %s to %s "%(source,fellow.cDir + '/'))
+                self.log(interpreter.getSymbolTable().html())
+                copytree(source,fellow.cDir + '/')
+
 
             elif x.text[0] == ':' :
                 self.log('eval block from StaticSiteMode')
@@ -532,11 +548,12 @@ class StaticSiteMode(UrMode) :
                 dest = m.groups(0)[1]
                 index.append([linkText,dest,False])
 
+
             else :
                 self.evalNode(x, (fellow.inc()).newDir(nd))
                 index.append([x.text,spaceUnder(x.text)+'/index.html',True])                    
 
-        self.environment.interpreter.indexPage(node.text, index, fellow.newDir(nd))
+        #self.environment.interpreter.indexPage(node.text, index, fellow.newDir(nd))
 
         return ''
 

@@ -23,6 +23,7 @@ class Logger(list) :
             mkdir('logs')
         except : pass
         fName = 'logs/log%s.html' % self.index
+        
         self.index = self.index + 1
         s = st.html().encode('utf-8')
         self.writeFile(fName,s)

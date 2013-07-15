@@ -44,6 +44,7 @@ class InterpreterFactory :
         
 
 def makeLink(siteRoot, linkText, linkDest, isDir) :
+    # TODO remove dTree dependency
     if isDir :
         imgSrc = '%sfolder.gif' % (siteRoot + '/dTree/img/')
     else : 
@@ -56,9 +57,9 @@ class PageMaker :
         self.tpl = tpl
     def readTpl(self, tplName) :
         self.tpl = Template(fromFile(tplName))
-    def write(self, fName, d) :
+    def write(self, fName, dic) :
         f=open(fName,'w')
-        s = self.tpl.safe_substitute(d)
+        s = self.tpl.safe_substitute(dic)
         f.write(s)
         f.close()
 
@@ -78,7 +79,7 @@ class Environment :
         self.compilerDir = (sys.path[0] + '/').replace('\\','/')
         #ab = nullArgBlock()
         #ab['stdlib'] = self.compilerDir + '/standard-library'
-        ab = {'stdlib': self.compilerDir + '/standard-library'}
+        ab = {'stdlib': self.compilerDir + '/stdlib'}
         self.symbolTable.pushFrame(ab)
         
     def siteRoot(self) :
@@ -92,6 +93,7 @@ class Environment :
 
     def getCurrentPageName(self) :
         return self.currentPageName
+        
 
 class SiteMapper :
     def __init__(self,log) :
@@ -228,25 +230,26 @@ class Interpreter :
         self.log("<a href='%s'>%s</a>" % (dName,dName),'link')
         mkdir(self.dName)
 
-        self.log('copy standard-library blocks')
-        copytree(sp + 'standard-library/blocks',self.dName + '/blocks')
+        # TODO see if we can delete this
+        self.log('copy stdlib blocks')
+        copytree(sp + 'stdlib/blocks',self.dName + '/blocks')
 
         self.log('copy templates')
         mkdir(self.dName + '/templates/')
-        copytree(sp + 'standard-library/site-templates/default',self.dName + '/templates/default')
+        copytree(sp + 'stdlib/templates/default',self.dName + '/templates/default')
 
         for p in packages :
             self.log('copy template packages : %s' % p)
-            copytree(sp + 'standard-library/site-templates/%s'%p, self.dName + '/templates/%s'%p)
+            copytree(sp + 'stdlib/templates/%s'%p, self.dName + '/templates/%s'%p)
       
-        self.log('copy dtree')
-        copytree(sp + 'standard-library/dtree',self.dName + '/dtree')
+        #self.log('copy dtree')
+        #copytree(sp + 'standard-library/dtree',self.dName + '/dtree')
 
         self.log('loading standard template')
-        self.indexTemplate = Template(fromFile(sp + 'standard-library/site-templates/default/template.html', self.getLog(),''))
+        self.indexTemplate = Template(fromFile(sp + 'stdlib/templates/default/template.html', self.getLog(),''))
 
         self.log('loading default page tree')
-        defaultTree = self.opmlFileToTree(sp + 'standard-library/blocks/default-page.opml')
+        defaultTree = self.opmlFileToTree(sp + 'stdlib/blocks/default-page.opml')
 
         self.modes['ur'].evalNode(defaultTree,FellowTraveller(0,self.dName,lambda x, y : x) )
 
@@ -337,28 +340,20 @@ class Interpreter :
         self.siteMapId = 1
         
         self.siteMap = """
-<div class="dtree">
-
-	<p><a href="javascript: d.openAll();">open all</a> | <a href="javascript: d.closeAll();">close all</a></p>
-
-	<script type="text/javascript">
-		<!--
-
-		d = new dTree('d','%s');
-
-		d.add(0,-1,'Home','%s','','controlmain');
-                %s
-		document.write(d);
-		d.openAll();
-
-		//-->
-	</script>
+<div class="sitemap">
+<a href="%s" target="controlmain">Home</a>
+<br/>
+<a href="%s" target="controlmain">Index</a>
+<br/>
+%s
 
 </div>        
-""" % (self.siteRoot()+'/',self.siteRoot() + '/%s/index.html' % spaceUnder(tree.text[1:]),
-       '\n		'.join(
-        [ self.rSiteMap(x,0,
-                FellowTraveller(0,self.siteRoot() + ('/%s/'%spaceUnder(tree.text[1:])),lambda a,b : a)) for x in tree.children ]
+""" % (self.siteRoot()+'/',
+       self.siteRoot() + '/%s/index.html' % spaceUnder(tree.text[1:]),
+       '\n'.join(
+            [ self.rSiteMap(x,0,FellowTraveller(0,self.siteRoot() + ('/%s/'%spaceUnder(tree.text[1:])),lambda a,b : a)) 
+                  for x in tree.children 
+            ]
           )
        )
         self.log('makeSiteMap : made siteMap : %s' % self.siteMap)
@@ -383,18 +378,18 @@ class Interpreter :
             linkText = m.groups(0)[0]
             dest = m.groups(0)[1]
             sm = sm + """
-            d.add(%s,%s,"%s","%s","%s",'controlmain');
-""" % (self.siteMapId, parentId, linkText, dest, lpn.pageName)
+            <li>A: <a href="">%s</a> (%s, %s, %s, %s)</li>
+""" % (lpn.pageName, self.siteMapId, parentId, linkText, dest )
             
         elif lpn.matches :
             sm = sm + """
-            d.add(%s,%s,"%s","%s/%s","%s",'controlmain');
-		""" % (self.siteMapId, parentId, lpn.pageName, fellow.cDir, spaceUnder(lpn.outFileName),lpn.pageName)
+            <li>B: <a href="%s%s" target="controlmain">%s</a> (%s, %s)</li>
+		""" % (fellow.cDir, spaceUnder(lpn.outFileName), lpn.pageName, self.siteMapId, parentId)
         else :
             # it's a subdirectory
             sm = sm + """
-            d.add(%s,%s,"%s","%s/%s/index.html",'index','controlmain');
-		""" % (self.siteMapId, parentId, node.text, fellow.cDir, spaceUnder(node.text))
+            <li>SUBDIR : <a href="">%s</a> (%s, %s, %s, %s)</li>
+ 		""" % (self.siteMapId, parentId, node.text, fellow.cDir, spaceUnder(node.text))
 
             thisId = self.siteMapId
             for c in node.children :

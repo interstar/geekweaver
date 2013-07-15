@@ -48,6 +48,9 @@ class FellowTraveller :
     def newDir(self,newDir) :
         """ Similar to FellowTraveller.inc, we want a new FellowTraveller with a new cDir"""
         return FellowTraveller(self.depth, newDir, self.sideFx)
+        
+    def __str__(self) :
+        return "&lt;&lt;%s, %s, %s&gt;&gt;" % (self.depth,self.cDir,self.sideFx)
     
 def nullFellowTraveller() :
     return FellowTraveller(0,'',lambda x, y : x)
