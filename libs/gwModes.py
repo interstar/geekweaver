@@ -526,15 +526,12 @@ class StaticSiteMode(UrMode) :
                 source = (x.text[6:]).strip()
                 #only absolute copy
                 self.log("Want to copy from %s to %s "%(source,nd))
-                self.log(self.environment.getSymbolTable(),"symTable")
-                self.log("Fellow %s" % fellow)
                 copy2(source,nd)
                 
             elif re.match(":copytree",x.text) :
                 source = (x.text[10:]).strip()
                 #only absolute copy
-                self.log("Want to copy from %s to %s "%(source,fellow.cDir + '/'))
-                self.log(interpreter.getSymbolTable().html())
+                self.log("Want to copy directory from %s to %s "%(source,nd))
                 copytree(source,fellow.cDir + '/')
 
 
