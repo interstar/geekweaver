@@ -7,7 +7,7 @@ This is the main interpreter for GeekWeaver
 """
 
 from SymbolTable import *
-from gwModes import *
+from modes import *
 
 class InterpreterFactory :
     """
@@ -231,8 +231,8 @@ class Interpreter :
         mkdir(self.dName)
 
         # TODO see if we can delete this
-        self.log('copy stdlib blocks')
-        copytree(sp + 'stdlib/blocks',self.dName + '/blocks')
+        #self.log('copy stdlib blocks')
+        #copytree(sp + 'stdlib/blocks',self.dName + '/blocks')
 
         self.log('copy templates')
         mkdir(self.dName + '/templates/')
