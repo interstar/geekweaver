@@ -2,13 +2,13 @@
 <opml version="2.0">
 	<head>
 		<title>gw_demo</title>
-		<dateModified>Sat, 27 Jul 2013 22:29:11 GMT</dateModified>
+		<dateModified>Sat, 27 Jul 2013 23:30:28 GMT</dateModified>
 		<expansionState>1</expansionState>
 		</head>
 	<body>
 		<outline text="About" created="Sat, 27 Jul 2013 22:28:52 GMT">
-			<outline text="Use the &lt;a href=&quot;https://github.com/interstar/geekweaver&quot;&gt;GeekWeaver&lt;/a&gt; compiler to make the website." created="Sat, 27 Jul 2013 22:27:50 GMT"/>
 			<outline text="This is a simple 2-page static web-site defined using OPML" created="Sat, 27 Jul 2013 22:27:27 GMT"/>
+			<outline text="Use the &lt;a href=&quot;https://github.com/interstar/geekweaver&quot;&gt;GeekWeaver&lt;/a&gt; compiler to make the website." created="Sat, 27 Jul 2013 22:27:50 GMT"/>
 			</outline>
 		<outline text="Definitions" created="Sat, 13 Jul 2013 20:35:30 GMT">
 			<outline text="::menu" created="Sat, 27 Jul 2013 19:36:11 GMT">
@@ -120,7 +120,6 @@
 						</outline>
 					<outline text=".&lt;p&gt;" created="Sat, 27 Jul 2013 18:43:42 GMT">
 						<outline text="*" created="Sat, 27 Jul 2013 20:19:22 GMT">
-							<outline text="&gt; Download GeekWeaver compiler &gt; https://github.com/interstar/geekweaver" created="Sat, 27 Jul 2013 22:24:09 GMT"/>
 							<outline text="&gt; See the source of this site &gt; http://reader.smallpicture.com/?opmlurl=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fo90jg9ac55y7b74%2Fgwdemo.opml " created="Sat, 27 Jul 2013 20:19:32 GMT"/>
 							<outline text="&gt; Get the source as a basis for your own GeekWeaver site. &gt; https://dl.dropbox.com/s/o90jg9ac55y7b74/gwdemo.opml" created="Sat, 27 Jul 2013 19:29:38 GMT"/>
 							</outline>
