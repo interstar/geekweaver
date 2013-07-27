@@ -273,7 +273,7 @@ class Interpreter :
         self.log('writing frameset')
         f = open('%s/index.html' % cDir,'w')
         f.write("""
-<frameset cols="25%,75%">
+<frameset cols="15%,85%">
    <frame src="menu.html">
    <frame name="controlmain">
 </frameset>""")
@@ -294,10 +294,11 @@ class Interpreter :
     </head>
     <body>
     <h3>GeekWeaver</h3>
+    %s
     <p>
     <A href="../log.html" target="controlmain">Log</a>
     </p>
-    %s
+
     </body>
 </html>        
 """ % self.siteMap
@@ -341,15 +342,11 @@ class Interpreter :
         
         self.siteMap = """
 <div class="sitemap">
-<a href="%s" target="controlmain">Home</a>
-<br/>
-<a href="%s" target="controlmain">Index</a>
-<br/>
+Site
 %s
 
 </div>        
-""" % (self.siteRoot()+'/',
-       self.siteRoot() + '/%s/index.html' % spaceUnder(tree.text[1:]),
+""" % (
        '\n'.join(
             [ self.rSiteMap(x,0,FellowTraveller(0,self.siteRoot() + ('/%s/'%spaceUnder(tree.text[1:])),lambda a,b : a)) 
                   for x in tree.children 
@@ -378,12 +375,12 @@ class Interpreter :
             linkText = m.groups(0)[0]
             dest = m.groups(0)[1]
             sm = sm + """
-            <li>A: <a href="">%s</a> (%s, %s, %s, %s)</li>
+            <li><a href="">%s</a> (%s, %s, %s, %s)</li>
 """ % (lpn.pageName, self.siteMapId, parentId, linkText, dest )
             
         elif lpn.matches :
             sm = sm + """
-            <li>B: <a href="%s%s" target="controlmain">%s</a> (%s, %s)</li>
+            <li><a href="%s%s" target="controlmain">%s</a> <!--(%s, %s)--></li>
 		""" % (fellow.cDir, spaceUnder(lpn.outFileName), lpn.pageName, self.siteMapId, parentId)
         else :
             # it's a subdirectory
