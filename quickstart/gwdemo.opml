@@ -2,8 +2,8 @@
 <opml version="2.0">
 	<head>
 		<title>gw_demo</title>
-		<dateModified>Sat, 27 Jul 2013 23:30:28 GMT</dateModified>
-		<expansionState>1</expansionState>
+		<dateModified>Sat, 27 Jul 2013 23:37:35 GMT</dateModified>
+		<expansionState>1,4</expansionState>
 		</head>
 	<body>
 		<outline text="About" created="Sat, 27 Jul 2013 22:28:52 GMT">
@@ -71,9 +71,6 @@
 						</outline>
 					<outline text=".&lt;body&gt;" created="Sat, 13 Jul 2013 20:35:43 GMT">
 						<outline text=":menu" created="Sat, 27 Jul 2013 19:37:06 GMT"/>
-						<outline text=".&lt;div class=&quot;io&quot;&gt;" created="Sat, 27 Jul 2013 20:53:39 GMT">
-							<outline text="" created="Sat, 27 Jul 2013 20:56:49 GMT"/>
-							</outline>
 						<outline text=".&lt;div class=&quot;main&quot;&gt;" created="Sat, 13 Jul 2013 20:35:51 GMT">
 							<outline text=".&lt;h2&gt;" created="Sat, 13 Jul 2013 20:35:45 GMT">
 								<outline text="$title" created="Sat, 13 Jul 2013 20:35:48 GMT"/>
