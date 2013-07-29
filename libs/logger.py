@@ -2,6 +2,7 @@
 # Copyright (c) 2007 Phil Jones <interstar@gmail.com>
 
 from os import removedirs, mkdir, rmdir, getcwd, makedirs
+import cgi
 
 class Logger(list) :
 
@@ -33,6 +34,9 @@ class Logger(list) :
         if typ == 'symTable' :
             fName = self.writeSymTable(s)
             self.append(["<a href='%s'>SymTable</a>"%fName,typ])
+        elif typ == 'html' or typ=='pre' :
+            s = cgi.escape(s)
+            self.append([s.encode('utf-8'),typ])
         else :
             self.append([s.encode('utf-8'),typ])
 
@@ -49,6 +53,12 @@ class Logger(list) :
                     r = """<div style='color:red;'>%s</div>""" % x[0].replace('<','&lt;')
                 elif x[1] == 'html' :
                     r = """%s""" % x[0]
+                elif x[1] == 'pre' :
+                    r = """
+                    <pre>
+                    
+                    %s
+                    </pre>""" % x[0]
                 else :
                     r = x[0]
                 return r
