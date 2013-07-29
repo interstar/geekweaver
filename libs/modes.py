@@ -20,11 +20,19 @@ from SymbolTable import *
 from logger import *
 from gwHelpers import *
 
+
+
+try :
+    from markdown import markdown 
+    MARKDOWN_ENABLED = True
+except e : 
+    MARKDOWN_ENABLED = False
+
+
 # functions
 
 
 # classes        
-
 
 class ArgBlock(dict) :
 
@@ -346,7 +354,7 @@ class UrMode :
 
         
         else :
-            # the nood is actually a string so we just evaluate any symbols in it and return it
+            # the node is actually a string so we just evaluate any symbols in it and return it
             return self.evalSymbols(node,fellow)
 
     def modeEvalNode(self, node, fellow) :
@@ -383,7 +391,7 @@ class UrMode :
             
         
     def evalSymbols(self, s, fellow) :
-        self.log('evalSymbols with %s' % s)
+        self.log('evalSymbols with *%s*' % s)
 
         if re.match('#',s) :
             sym = s[1:].strip()
@@ -545,12 +553,9 @@ class StaticSiteMode(UrMode) :
                 dest = m.groups(0)[1]
                 index.append([linkText,dest,False])
 
-
             else :
                 self.evalNode(x, (fellow.inc()).newDir(nd))
                 index.append([x.text,spaceUnder(x.text)+'/index.html',True])                    
-
-        #self.environment.interpreter.indexPage(node.text, index, fellow.newDir(nd))
 
         return ''
 
@@ -574,6 +579,16 @@ class StaticSiteMode(UrMode) :
 
         return lpn
 
+
+class PlainTextMode(UrMode) :
+    def sJoin(self, a) :
+        return '\n'.join(a)
+
+    def modeEvalNode(self, node, fellow) :    
+        s = self.evalSymbols(node.text,fellow)
+        s = s + "\n" + self.sJoin([self.evalNode(x,fellow) for x in node.children])
+        return s
+        
 
 class HtmlMode(UrMode) :
 
@@ -688,6 +703,8 @@ class HtmlMode(UrMode) :
             
         return self.sJoin(b)
 
+
+    
 
 class HtmlFormMode(HtmlMode) :
 
@@ -837,3 +854,18 @@ class DataMode(UrMode) :
             return a
         return g
         
+class MarkdownMode(UrMode) :
+    def sJoin(self, a) :
+        return '\n'.join(a)
+
+    def modeEvalNode(self, node, fellow) :
+        m = self.environment.interpreter.modes["plaintext"]
+        blocks = [m.evalNode(x, fellow) for x in node.children]
+        s = node.text + "\n" + self.sJoin(blocks)
+        
+        self.log(s,'pre')
+        if MARKDOWN_ENABLED :
+            s = markdown(s)
+            
+        self.log(s,'html')
+        return s

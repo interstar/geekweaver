@@ -9,6 +9,7 @@ This is the main interpreter for GeekWeaver
 from SymbolTable import *
 from modes import *
 
+
 class InterpreterFactory :
     """
     The GeekWeaver interpreter and environment has to wire together several things :
@@ -154,11 +155,13 @@ class Interpreter :
         self.modes['ur'] = UrMode(self.environment)
         self.modes['primal'] = PrimalMode(self.environment)
         self.modes['staticSite'] = StaticSiteMode(self.environment)
+        self.modes['plaintext'] = PlainTextMode(self.environment)
         self.modes['html'] = HtmlMode(self.environment)
         self.modes['htmlForm'] = HtmlFormMode(self.environment)
         self.modes['inter'] = PhpMode(self.environment)
         self.modes['javascript'] = JavascriptMode(self.environment)
         self.modes['data'] = DataMode(self.environment)
+        self.modes['markdown'] = MarkdownMode(self.environment)
         
         self.indexTemplate = None
         self.defaultFileExtension = 'html'
