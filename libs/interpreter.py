@@ -6,9 +6,12 @@
 This is the main interpreter for GeekWeaver
 """
 
+from shutil import copytree
+
 from SymbolTable import *
 from modes import *
-
+from siteModes import PrimalMode, StaticSiteMode
+from htmlModes import HtmlMode, HtmlFormMode, PhpMode, JavascriptMode
 
 class InterpreterFactory :
     """
