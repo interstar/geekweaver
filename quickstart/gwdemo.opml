@@ -2,8 +2,8 @@
 <opml version="2.0">
 	<head>
 		<title>gw_demo</title>
-		<dateModified>Tue, 30 Jul 2013 13:16:53 GMT</dateModified>
-		<expansionState>1,4,5,6,7,8,10,12,16,17,21,23,24</expansionState>
+		<dateModified>Tue, 30 Jul 2013 14:02:11 GMT</dateModified>
+		<expansionState>1,4,5,6,7,8,10,12,14,16,19,20,21,24,25,27,29,30,32,34,39</expansionState>
 		</head>
 	<body>
 		<outline text="About" created="Sat, 27 Jul 2013 22:28:52 GMT">
@@ -15,13 +15,19 @@
 				<outline text=".&lt;div class=&quot;menu&quot;&gt;" created="Sat, 27 Jul 2013 19:36:13 GMT">
 					<outline text=".&lt;ul&gt;" created="Sat, 27 Jul 2013 19:36:20 GMT">
 						<outline text=".&lt;li&gt;" created="Sat, 27 Jul 2013 19:42:18 GMT">
-							<outline text="&gt; Splash &gt; ./page1.html" created="Sat, 27 Jul 2013 19:36:34 GMT"/>
+							<outline text="&gt; Splash &gt; ./splash.html" created="Sat, 27 Jul 2013 19:36:34 GMT"/>
 							</outline>
 						<outline text=".&lt;li&gt;" created="Sat, 27 Jul 2013 19:42:38 GMT">
-							<outline text="&gt; About &gt; ./page2.html" created="Sat, 27 Jul 2013 19:36:46 GMT"/>
+							<outline text="&gt; About &gt; ./about.html" created="Sat, 27 Jul 2013 19:36:46 GMT"/>
+							</outline>
+						<outline text=".&lt;li&gt;" created="Tue, 30 Jul 2013 13:55:41 GMT">
+							<outline text="&gt; Blocks &gt; ./blocks.html" created="Tue, 30 Jul 2013 13:55:44 GMT"/>
 							</outline>
 						<outline text=".&lt;li&gt;" created="Tue, 30 Jul 2013 13:10:59 GMT">
-							<outline text="&gt; Markdown &gt; ./page3.html" created="Tue, 30 Jul 2013 13:11:06 GMT"/>
+							<outline text="&gt; Markdown &gt; ./markdown.html" created="Tue, 30 Jul 2013 13:11:06 GMT"/>
+							</outline>
+						<outline text=".&lt;li&gt;" created="Tue, 30 Jul 2013 13:22:54 GMT">
+							<outline text="&gt; Philosophy &gt; ./philosophy.html" created="Tue, 30 Jul 2013 13:22:58 GMT"/>
 							</outline>
 						</outline>
 					<outline text="&amp;nbsp;" created="Sat, 27 Jul 2013 22:04:12 GMT"/>
@@ -52,7 +58,6 @@
 								</outline>
 							<outline text=" .menu a {">
 								<outline text="display:block;"/>
-								<outline text="width:60px;"/>
 								<outline text="color:#ffffff;" created="Sat, 27 Jul 2013 19:56:00 GMT"/>
 								<outline text="}"/>
 								</outline>
@@ -87,7 +92,7 @@
 				</outline>
 			</outline>
 		<outline text="&amp;mysite" created="Sat, 13 Jul 2013 20:36:06 GMT">
-			<outline text="&amp;page1 :tpl" created="Sat, 27 Jul 2013 18:39:36 GMT">
+			<outline text="&amp;splash :tpl" created="Sat, 27 Jul 2013 18:39:36 GMT">
 				<outline text="title : Hello World!" created="Sat, 27 Jul 2013 18:39:41 GMT"/>
 				<outline text="main :" created="Sat, 27 Jul 2013 18:39:52 GMT">
 					<outline text=".&lt;p&gt;" created="Sat, 27 Jul 2013 18:42:23 GMT">
@@ -95,12 +100,12 @@
 						</outline>
 					<outline text=".&lt;p&gt;" created="Sat, 27 Jul 2013 18:40:08 GMT">
 						<outline text="Want to " created="Sat, 27 Jul 2013 18:44:04 GMT">
-							<outline text="&gt; learn more? &gt; ./page2.html " created="Sat, 27 Jul 2013 18:44:21 GMT"/>
+							<outline text="&gt; learn more? &gt; ./about.html " created="Sat, 27 Jul 2013 18:44:21 GMT"/>
 							</outline>
 						</outline>
 					</outline>
 				</outline>
-			<outline text="&amp;page2 :tpl" created="Sat, 27 Jul 2013 18:42:35 GMT">
+			<outline text="&amp;about :tpl" created="Sat, 27 Jul 2013 18:42:35 GMT">
 				<outline text="title: About" created="Sat, 27 Jul 2013 18:43:08 GMT"/>
 				<outline text="main :" created="Sat, 27 Jul 2013 18:43:16 GMT">
 					<outline text=".&lt;p&gt;" created="Sat, 27 Jul 2013 18:43:18 GMT">
@@ -125,17 +130,52 @@
 							</outline>
 						</outline>
 					<outline text=".&lt;p&gt;" created="Sat, 27 Jul 2013 19:31:10 GMT">
-						<outline text="&gt; Go back! &gt; ./page1.html " created="Sat, 27 Jul 2013 18:44:59 GMT"/>
+						<outline text="&gt; Go back! &gt; ./splash.html " created="Sat, 27 Jul 2013 18:44:59 GMT"/>
 						</outline>
 					</outline>
 				</outline>
-			<outline text="&amp;page3 :tpl" created="Tue, 30 Jul 2013 13:05:58 GMT">
+			<outline text="&amp;blocks :tpl" created="Tue, 30 Jul 2013 13:52:12 GMT">
+				<outline text="title : Re-usable Blocks" created="Tue, 30 Jul 2013 13:52:55 GMT"/>
+				<outline text="main :" created="Tue, 30 Jul 2013 13:52:20 GMT">
+					<outline text="&amp;&amp;markdown" created="Tue, 30 Jul 2013 13:31:26 GMT">
+						<outline text="In GeekWeaver, your main superpower is the ability to define reusable / paramaterized _blocks_. " created="Tue, 30 Jul 2013 13:28:51 GMT"/>
+						<outline text="You do this by putting two colons and a name in the root node of a block. Eg." created="Tue, 30 Jul 2013 13:30:06 GMT"/>
+						<outline text="    ::myBlock" created="Tue, 30 Jul 2013 13:30:30 GMT"/>
+						<outline text="        Contents of the block" created="Tue, 30 Jul 2013 13:50:34 GMT"/>
+						<outline text="        More contents of the block" created="Tue, 30 Jul 2013 13:50:44 GMT"/>
+						<outline text="(Make sure that the colons fall into the first two characters of the line.)" created="Tue, 30 Jul 2013 13:30:32 GMT"/>
+						<outline text="You _apply_ (or call) a block with a single colon and its name. As in " created="Tue, 30 Jul 2013 13:32:03 GMT"/>
+						<outline text="    :myBlock" created="Tue, 30 Jul 2013 13:50:54 GMT"/>
+						<outline text="This inserts a copy of the tree that was under the block definition at the point it's being reused. " created="Tue, 30 Jul 2013 13:33:16 GMT"/>
+						<outline text="For example, the menu at the top of all these pages was defined once, in a single block, and is being called in each page." created="Tue, 30 Jul 2013 13:34:14 GMT"/>
+						<outline text="Blocks can take parameters. Exactly like PHP or other templating languages you might be familiar with, parameters to a block are written as $name slots _within_ the block definition." created="Tue, 30 Jul 2013 13:30:44 GMT"/>
+						<outline text="When you call the block, you pass named values of arguments in the child-nodes of the line which makes the call." created="Tue, 30 Jul 2013 13:39:42 GMT"/>
+						<outline text="Classic example. Somewhere outside your page, a definition." created="Tue, 30 Jul 2013 13:45:59 GMT"/>
+						<outline text="    ::greeting" created="Tue, 30 Jul 2013 13:58:31 GMT"/>
+						<outline text="        Hello $name" created="Tue, 30 Jul 2013 13:58:46 GMT"/>
+						<outline text="Then inside a page" created="Tue, 30 Jul 2013 13:59:35 GMT"/>
+						<outline text="    :greeting" created="Tue, 30 Jul 2013 13:58:52 GMT"/>
+						<outline text="        name : World" created="Tue, 30 Jul 2013 13:58:57 GMT"/>
+						<outline text="" created="Tue, 30 Jul 2013 13:59:02 GMT"/>
+						</outline>
+					</outline>
+				</outline>
+			<outline text="&amp;markdown :tpl" created="Tue, 30 Jul 2013 13:05:58 GMT">
 				<outline text="title : Markdown Support" created="Tue, 30 Jul 2013 13:10:31 GMT"/>
 				<outline text="main :" created="Tue, 30 Jul 2013 13:10:39 GMT">
 					<outline text="&amp;&amp;markdown" created="Tue, 30 Jul 2013 13:06:04 GMT">
 						<outline text="This page is written using [Markdown](http://daringfireball.net/projects/markdown/)." created="Tue, 30 Jul 2013 13:06:09 GMT"/>
 						<outline text="Markdown support makes it a lot *easier* to write longer text pages in GeekWeaver." created="Tue, 30 Jul 2013 13:08:08 GMT"/>
-						<outline text="It's still a bit experimental though. For example it doesn't support ## titles, because this interferes with other bits of GeekWeaver markup. I'm working to improve compatibility so that markup will generally work. " created="Tue, 30 Jul 2013 13:15:18 GMT"/>
+						<outline text="It's still a bit experimental though. For example it doesn't support ## titles, because this interferes with other bits of GeekWeaver markup. I'm working to improve this compatibility." created="Tue, 30 Jul 2013 13:15:18 GMT"/>
+						</outline>
+					</outline>
+				</outline>
+			<outline text="&amp;philosophy :tpl" created="Tue, 30 Jul 2013 13:23:25 GMT">
+				<outline text="title : Philosophy" created="Tue, 30 Jul 2013 13:23:30 GMT"/>
+				<outline text="main :" created="Tue, 30 Jul 2013 13:23:34 GMT">
+					<outline text="&amp;&amp;markdown" created="Tue, 30 Jul 2013 13:23:36 GMT">
+						<outline text="_Everything_ you need in a GeekWeaver site can be written in a single OPML Outline. (As in the case of this QuickStart site.)" created="Tue, 30 Jul 2013 13:23:39 GMT"/>
+						<outline text="Except when it isn't. GeekWeaver has commands for pulling external files (eg. css into the static directory it's building.)" created="Tue, 30 Jul 2013 13:24:37 GMT"/>
 						</outline>
 					</outline>
 				</outline>
