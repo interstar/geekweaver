@@ -51,6 +51,8 @@ class Logger(list) :
                     r = x[0].replace('<','&lt;')
                 elif x[1] == 'error' :
                     r = """<div style='color:red;'>%s</div>""" % x[0].replace('<','&lt;')
+                elif x[1] == 'program' :
+                    r = """<div style='color:green;'>%s</div>""" % x[0].replace('<','&lt;') 
                 elif x[1] == 'html' :
                     r = """%s""" % x[0]
                 elif x[1] == 'pre' :

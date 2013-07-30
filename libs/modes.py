@@ -5,7 +5,6 @@
 
 from opml import *
 
-
 import re
 from string import Template
 from sys import *
@@ -153,6 +152,12 @@ class BaseMode :
                 blocks = [m.evalNode(x, fellow) for x in node.children]
                 return self.sJoin(blocks)                                                   
 
+            if re.match(':log',s) :
+                self.log(s[4:],'program')
+                blocks = [self.evalNode(x, fellow) for x in node.children]
+                return self.sJoin(blocks)
+                
+
             if re.match(':for',s) :
                 ll = LexLine(s,':')
                 self.log("In :for")
@@ -171,6 +176,7 @@ class BaseMode :
                     
                 return self.sJoin(blocks)
                 
+            
             
             if re.match(':\*',s) :
                 # call a block on each item of the sublist (kind of a comprehension)
@@ -298,12 +304,13 @@ class BaseMode :
                 except : pass
             return Template(s).safe_substitute(d)
         else :
-            return s
-
-    
+            return s    
 
 
 class PlainTextMode(BaseMode) :
+    """
+    A simple text mode. Joins every list item into CR separated lines.
+    """
     def sJoin(self, a) :
         return '\n'.join(a)
 
@@ -312,8 +319,6 @@ class PlainTextMode(BaseMode) :
         s = s + "\n" + self.sJoin([self.evalNode(x,fellow) for x in node.children])
         return s
         
-
-
 
 class DataMode(BaseMode) :
     """
@@ -358,4 +363,4 @@ class MarkdownMode(BaseMode) :
             self.log("Markdown was invoked, but you don't have the library installed for Python on your machine")
             
         self.log(s,'html')
-        return s
+        return s        

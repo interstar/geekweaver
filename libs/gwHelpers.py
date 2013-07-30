@@ -58,7 +58,7 @@ def nullFellowTraveller() :
                 
 class LexPageName :
     """
-    Here's we're extracting information defining the name of a new page, 
+    Here we're extracting information defining the name of a new page, 
     with optional blockCalls and rename
     Main format :
     &pageName [blockCall] [rename]
