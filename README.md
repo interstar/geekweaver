@@ -11,6 +11,11 @@ QuickStart
 ----------
 Make sure you have Python installed on your machine. ( http://python.org/ )
 
+Also, ideally, you should also have Markdown
+
+    easy_install markdown
+
+GeekWeaver will work without Markdown support, but we now use it even for this quick-start demo. It's HIGHLY recommended.
 
     git clone https://github.com/interstar/geekweaver.git gw
     
@@ -26,7 +31,7 @@ What did I just do?
 You grabbed a copy of GeekWeaver, went into the quickstart directory, ran the compiler on the demo file and looked at 
 the result.
 
-You should now see, in your browser a simple 2-page website created from a single GeekWeaver "program" ie. an OPML file.
+You should now see, in your browser a simple website created from a single GeekWeaver "program" ie. an OPML file.
 
 It's in a frameset with a menu which lets you look at both the pages, and the logs of GeekWeaver compilation. 
 

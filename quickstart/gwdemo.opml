@@ -2,12 +2,12 @@
 <opml version="2.0">
 	<head>
 		<title>gw_demo</title>
-		<dateModified>Tue, 30 Jul 2013 14:02:11 GMT</dateModified>
-		<expansionState>1,4,5,6,7,8,10,12,14,16,19,20,21,24,25,27,29,30,32,34,39</expansionState>
+		<dateModified>Tue, 30 Jul 2013 14:15:40 GMT</dateModified>
+		<expansionState>1,4,7</expansionState>
 		</head>
 	<body>
 		<outline text="About" created="Sat, 27 Jul 2013 22:28:52 GMT">
-			<outline text="This is a simple 2-page static web-site defined using OPML" created="Sat, 27 Jul 2013 22:27:27 GMT"/>
+			<outline text="This is a simple static web-site defined using OPML" created="Sat, 27 Jul 2013 22:27:27 GMT"/>
 			<outline text="Use the &lt;a href=&quot;https://github.com/interstar/geekweaver&quot;&gt;GeekWeaver&lt;/a&gt; compiler to make the website." created="Sat, 27 Jul 2013 22:27:50 GMT"/>
 			</outline>
 		<outline text="Definitions" created="Sat, 13 Jul 2013 20:35:30 GMT">
@@ -28,6 +28,9 @@
 							</outline>
 						<outline text=".&lt;li&gt;" created="Tue, 30 Jul 2013 13:22:54 GMT">
 							<outline text="&gt; Philosophy &gt; ./philosophy.html" created="Tue, 30 Jul 2013 13:22:58 GMT"/>
+							</outline>
+						<outline text=".&lt;li&gt;" created="Tue, 30 Jul 2013 14:05:56 GMT">
+							<outline text="&gt; Log &gt; ./log.html" created="Tue, 30 Jul 2013 14:05:59 GMT"/>
 							</outline>
 						</outline>
 					<outline text="&amp;nbsp;" created="Sat, 27 Jul 2013 22:04:12 GMT"/>
@@ -176,6 +179,20 @@
 					<outline text="&amp;&amp;markdown" created="Tue, 30 Jul 2013 13:23:36 GMT">
 						<outline text="_Everything_ you need in a GeekWeaver site can be written in a single OPML Outline. (As in the case of this QuickStart site.)" created="Tue, 30 Jul 2013 13:23:39 GMT"/>
 						<outline text="Except when it isn't. GeekWeaver has commands for pulling external files (eg. css into the static directory it's building.)" created="Tue, 30 Jul 2013 13:24:37 GMT"/>
+						</outline>
+					</outline>
+				</outline>
+			<outline text="&amp;log :tpl" created="Tue, 30 Jul 2013 14:05:50 GMT">
+				<outline text="title : Log File" created="Tue, 30 Jul 2013 14:06:09 GMT"/>
+				<outline text="main :" created="Tue, 30 Jul 2013 14:06:15 GMT">
+					<outline text=":log This is where we discuss the log" created="Tue, 30 Jul 2013 14:13:03 GMT"/>
+					<outline text="&amp;&amp;markdown" created="Tue, 30 Jul 2013 14:06:16 GMT">
+						<outline text="You'll see in the GeekWeaver control panel on the left of the frameset a link called &quot;Log&quot;." created="Tue, 30 Jul 2013 14:06:20 GMT"/>
+						<outline text="This leads you to the log-file of the compilation. Right now, it's primarily used to help me in debugging GeekWeaver itself, but it can sometimes help you find what's going wrong in your own GeekWeaver programs. " created="Tue, 30 Jul 2013 14:06:55 GMT"/>
+						<outline text="Although the error messages aren't all that useful to the beginner, you _can_ write messages to the log yourself. If something's going wrong in the Chocolate Cake section of your page, just use " created="Tue, 30 Jul 2013 14:08:13 GMT"/>
+						<outline text="    :log This is the beginning of my section on Chocolate Cake" created="Tue, 30 Jul 2013 14:08:45 GMT"/>
+						<outline text="Program generated log messages appear in green. " created="Tue, 30 Jul 2013 14:09:22 GMT"/>
+						<outline text="This can be some help to let you know what's going on behind the scenes in GeekWeaver. " created="Tue, 30 Jul 2013 14:09:40 GMT"/>
 						</outline>
 					</outline>
 				</outline>
