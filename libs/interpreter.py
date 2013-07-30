@@ -152,7 +152,7 @@ class Interpreter :
         self.environment = Environment(self,symbolTable,siteMapper)
 
         self.modes = {}
-        self.modes['ur'] = UrMode(self.environment)
+        self.modes['ur'] = BaseMode(self.environment)
         self.modes['primal'] = PrimalMode(self.environment)
         self.modes['staticSite'] = StaticSiteMode(self.environment)
         self.modes['plaintext'] = PlainTextMode(self.environment)

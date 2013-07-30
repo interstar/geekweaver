@@ -774,7 +774,7 @@ class TestInterpreter(unittest.TestCase) :
         i = self.buildInterpreter()
         i.setSymbolTable(st)
         self.assertEquals(i.environment.symbolTable,st)
-        self.assertEquals(i.modes['ur'].__class__,UrMode)
+        self.assertEquals(i.modes['ur'].__class__,BaseMode)
         self.assertEquals(i.modes['staticSite'].__class__,StaticSiteMode)
         self.assertEquals(i.modes['html'].__class__,HtmlMode)
         self.assertEquals(i.modes['htmlForm'].__class__,HtmlFormMode)
