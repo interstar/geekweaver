@@ -8,7 +8,8 @@ GeekWeaver Templating Language
   * For menus, headers, etc.
   * Blocks also take parameters, so can be different on every page.
 * Markdown support for easy HTML generation 
-  * But GeekWeaver can be used to generate any kind of text file.
+  * (Not full support yet because of clashes between Markdown and earlier GW markups. But in-progress.)
+* But GeekWeaver can be used to generate any kind of text file.
 
 
 
