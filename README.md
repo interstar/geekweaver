@@ -3,9 +3,15 @@ GeekWeaver
 
 GeekWeaver templating language
 
-Note : this is still very, very crude ... just in the process of cleaning up and making this work properly again.
+* Create templates in an outliner (OPML files)
+  * One outline can compile to multiple pages
+* Define your own re-usable "blocks" 
+  * (for menus, headers, etc.)
+  * Blocks can also take parameters, so can be different on every page.
+* Markdown support for easy HTML generation
 
-However, if you're curious, and adventurous ... there is something to see now.
+
+
 
 QuickStart 
 ----------
