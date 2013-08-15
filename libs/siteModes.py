@@ -81,18 +81,20 @@ class StaticSiteMode(BaseMode) :
                 index.append(i)
                 self.log('index += %s'%i)
                 
+                
+            elif re.match(":copytree",x.text) :
+                source = (x.text[10:]).strip()
+                #only absolute copy
+                dest = nd+"/"+(source.split("/")[-1])
+                self.log("Want to copy directory from *%s* to *%s* "%(source,dest))
+                copytree(source, dest)
+
+
             elif re.match(":copy",x.text) :
                 source = (x.text[6:]).strip()
                 #only absolute copy
                 self.log("Want to copy from %s to %s "%(source,nd))
                 copy2(source,nd)
-                
-            elif re.match(":copytree",x.text) :
-                source = (x.text[10:]).strip()
-                #only absolute copy
-                self.log("Want to copy directory from %s to %s "%(source,nd))
-                copytree(source,fellow.cDir + '/')
-
 
             elif x.text[0] == ':' :
                 self.log('eval block from StaticSiteMode')
