@@ -352,9 +352,10 @@ class MarkdownMode(BaseMode) :
         return '\n'.join(a)
 
     def modeEvalNode(self, node, fellow) :
-        m = self.environment.interpreter.modes["plaintext"]
+        s = self.evalSymbols(node.text,fellow) 
+        m = self.environment.interpreter.modes["plaintext"]        
         blocks = [m.evalNode(x, fellow) for x in node.children]
-        s = node.text + "\n" + self.sJoin(blocks)
+        s = s + "\n" + self.sJoin(blocks)
         
         self.log(s,'pre')
         if MARKDOWN_ENABLED :
