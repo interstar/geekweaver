@@ -1,5 +1,6 @@
 import re
 from gwNode import GWNode
+from string import Template
 
 # Classes
 class ArgBlock(dict) :
